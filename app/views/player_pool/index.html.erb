@@ -1,0 +1,58 @@
+<h1>PlayerPool#index</h1>
+<p>Find me in app/views/player_pool/index.html.erb</p>
+
+<hr>
+
+<hr>
+<h2><%= @player_pool.count %> Players in Current Pool</h2>
+<hr>
+<div>
+     <h4>Import a playerpool</h4>
+     <%= form_tag player_pool_import_path, multipart:true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Import CSV" %>
+     <% end %>
+</div>
+
+<hr>
+
+<h3><%= @player_pool.count %> Players in Pool</h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Name</th>
+			<th>Name + Id</th>
+			<th>Position</th>
+			<th>Team</th>
+			<th>Salary</th>
+			<th>Game Info</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @player_pool.sort_by{|row| -row.salary}.each{|player| %>
+			<tr>
+				<% player.attributes.each do |cell| %>
+					<td><%= cell[1] %></td>
+				<% end %>
+			</tr>
+		<% } %>
+	</tbody>
+</table>
+
+
+<hr>
+
+<div>
+     <h4>Delete this playerpool</h4>
+     <%= form_tag player_pool_delete_pool_path, multipart:false do %>
+          <%= submit_tag "Delete this playerpool" %>
+     <% end %>
+</div>
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>

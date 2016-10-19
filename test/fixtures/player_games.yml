@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  team: MyString
+  game_date: 2016-10-12 13:11:51
+  game_season: 1
+  home_away: MyString
+  opponent: MyString
+  game_result: MyString
+  started: false
+  minutes_played: 1
+  points: 1
+  three_pt_shots_made: 1
+  o_rebounds: 1
+  d_rebounds: 1
+  assists: 1
+  steals: 1
+  blocks: 1
+  turn_overs: 1
+  double-double: false
+  triple-double: false
+
+two:
+  name: MyString
+  team: MyString
+  game_date: 2016-10-12 13:11:51
+  game_season: 1
+  home_away: MyString
+  opponent: MyString
+  game_result: MyString
+  started: false
+  minutes_played: 1
+  points: 1
+  three_pt_shots_made: 1
+  o_rebounds: 1
+  d_rebounds: 1
+  assists: 1
+  steals: 1
+  blocks: 1
+  turn_overs: 1
+  double-double: false
+  triple-double: false

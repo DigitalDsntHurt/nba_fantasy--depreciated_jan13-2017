@@ -1,0 +1,13 @@
+<h1>Lineups#index</h1>
+<p>Find me in app/views/lineups/index.html.erb</p>
+<hr>
+<h2>Currently <%= @lineups.count %> rows in Lineups model</h2>
+<hr>
+
+<table width="100%" align="center">
+	<thead align="center">
+	<% @lineups.column_names[1..-3].each do |header| %>
+		<th align="center"><%= header %></th>
+	<% end %>
+	</thead>
+</table>

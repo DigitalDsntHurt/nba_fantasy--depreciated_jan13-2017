@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NbaModelV00</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<style type="text/css">
+	body{
+	    margin:0px;
+	    background:#ffffff;
+	}
+	.header-cont {
+	    background:#5cb85c;
+	    width:100%;
+	    position:fixed;
+	    top:0px;
+	}
+	.header {
+	    height:50px;
+	    background:#F0F0F0;
+	    border:1px solid #CCC;
+	    width:960px;
+	    margin:0px auto;
+	}
+	.content {
+	    width:960px;
+	    background: #F0F0F0;
+	    border: 1px solid #CCC;
+	    height: 2000px;
+	    margin: 70px auto;
+	}
+</style>
+
+  </head>
+
+  <body>
+
+	<div class="header-cont">
+		<br>
+	    <div> 
+	    	<table width="100%">
+	    		<thead>
+	    			<th width="20%"><a href="/players">Players</a></th>
+	    			<th width="20%"><a href="/player_pool">PlayerPool</a></th>
+	    			<th width="20%"><a href="/lineups">Lineups</a></th>
+	    			<th width="20%"><a href="/player_games">Player Games</a></th>
+	    			<th width="20%"><a href="/debug">Debug</a></th>
+	    		</thead>
+	    	</table>
+	    </div>
+	    <br>
+	</div>
+	 
+	<div><br><br><br></div>
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<h1>PlayerGames#index</h1>
+<p>Find me in app/views/player_games/index.html.erb</p>
+
+<hr>
+<center><h2><%= @player_games.count %> PlayerGames in db </h2></center>
+<table>
+	
+	<thead>
+		<% @player_games.column_names.each do |header| %>
+			<th> <%= header %> </th>
+		<% end %>
+	</thead>
+	
+	<% @player_games.order(fps: :desc).each do |row| %>
+	<tr>
+		<% row.attributes.each do |cell| %>
+			<td> <%= cell[1] %> </td>
+		<% end %>
+	</tr>
+	<% end %>
+
+</table>

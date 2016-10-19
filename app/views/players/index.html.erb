@@ -1,0 +1,163 @@
+<h1>Players#index</h1>
+<p>Find me in app/views/players/index.html.erb</p>
+
+<hr>
+<h1>Leaderboard</h1>
+<table border="1" width="100%">
+	
+	<tr valign="top">
+		<td width="50%">
+			<center><h4>Point Guards</h4></center>
+			<table>
+				<thead>
+					<% @players.column_names.each do |header| %>
+						<% next if header == "basketball_reference_gamelog_url" or header == "created_at" or header == "updated_at" or header == "id" or header == "position" %>
+						<th> <%= header %> </th>
+					<% end %>
+				</thead>
+
+				<% @players.where(position: "PG").order(fps: :desc).take(33).each do |row| %>
+					<tr>
+						<% row.attributes.each do |cell| %>
+							<% next if cell[0] == "basketball_reference_gamelog_url" or cell[0] == "created_at" or cell[0] == "updated_at" or cell[0] == "id" or cell[0] == "position" %>
+							<td> <%= cell[1] %> </td>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+		</td>
+		<td width="50%">
+			<center><h4>Centers</h4></center>
+			<table>
+				<thead>
+					<% @players.column_names.each do |header| %>
+					<% next if header == "basketball_reference_gamelog_url" or header == "created_at" or header == "updated_at" or header == "id" or header == "position" %>
+						<th> <%= header %> </th>
+					<% end %>
+				</thead>
+
+				<% @players.where(position: "C").order(fps: :desc).take(33).each do |row| %>
+					<tr>
+						<% row.attributes.each do |cell| %>
+						<% next if cell[0] == "basketball_reference_gamelog_url" or cell[0] == "created_at" or cell[0] == "updated_at" or cell[0] == "id" or cell[0] == "position" %>
+							<td> <%= cell[1] %> </td>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+		</td>
+	</tr>
+
+	<tr valign="top">
+		<td width="50%">
+			<center><h4>Shooting Guards</h4></center>
+			<table>
+				<thead>
+					<% @players.column_names.each do |header| %>
+						<% next if header == "basketball_reference_gamelog_url" or header == "created_at" or header == "updated_at" or header == "id" or header == "position" %>
+						<th> <%= header %> </th>
+					<% end %>
+				</thead>
+
+				<% @players.where(position: "SG").order(fps: :desc).take(33).each do |row| %>
+					<tr>
+						<% row.attributes.each do |cell| %>
+							<% next if cell[0] == "basketball_reference_gamelog_url" or cell[0] == "created_at" or cell[0] == "updated_at" or cell[0] == "id" or cell[0] == "position" %>
+							<td> <%= cell[1] %> </td>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+		</td>
+		<td width="50%">
+			<center><h4>Power Forwards</h4></center>
+			<table>
+				<thead>
+					<% @players.column_names.each do |header| %>
+					<% next if header == "basketball_reference_gamelog_url" or header == "created_at" or header == "updated_at" or header == "id" or header == "position" %>
+						<th> <%= header %> </th>
+					<% end %>
+				</thead>
+
+				<% @players.where(position: "PF").order(fps: :desc).take(33).each do |row| %>
+					<tr>
+						<% row.attributes.each do |cell| %>
+						<% next if cell[0] == "basketball_reference_gamelog_url" or cell[0] == "created_at" or cell[0] == "updated_at" or cell[0] == "id" or cell[0] == "position" %>
+							<td> <%= cell[1] %> </td>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+		</td>
+	</tr>
+
+	<tr valign="top">
+		<td width="50%">
+			<center><h4>Small Forward</h4></center>
+			<table>
+				<thead>
+					<% @players.column_names.each do |header| %>
+						<% next if header == "basketball_reference_gamelog_url" or header == "created_at" or header == "updated_at" or header == "id" or header == "position" %>
+						<th> <%= header %> </th>
+					<% end %>
+				</thead>
+
+				<% @players.where(position: "SF").order(fps: :desc).take(33).each do |row| %>
+					<tr>
+						<% row.attributes.each do |cell| %>
+							<% next if cell[0] == "basketball_reference_gamelog_url" or cell[0] == "created_at" or cell[0] == "updated_at" or cell[0] == "id" or cell[0] == "position" %>
+							<td> <%= cell[1] %> </td>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+		</td>
+		<td width="50%">
+			<center><h4></h4></center>
+			<table>
+				<thead>
+					<th>&nbsp;</th>
+				</thead>
+
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+</table>
+
+
+<br><br><hr><br><br>
+
+
+<h2>Values in this table are predictions based on past 10 game averages</h2>
+<table>
+	
+	<thead>
+		<% @players.column_names.each do |header| %>
+			<th> <%= header %> </th>
+		<% end %>
+	</thead>
+	
+	<% @players.each do |row| %>
+	<a href="">
+	<tr>
+		<% row.attributes.each_with_index do |cell,i| %>
+			<% if i == 1 %>
+				<td> <a href=<%= "/player/#{row.id}" %>><%= cell[1] %></a> </td>
+			<% else %>
+				<td> <%= cell[1] %> </td>
+			<% end %>
+		<% end %>
+	</tr>
+	</a>
+	<% end %>
+
+</table>
+<hr>
+
+
+
+
