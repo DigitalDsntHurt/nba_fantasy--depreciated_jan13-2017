@@ -1,5 +1,7 @@
 class PlayerPool < ApplicationRecord
 
+	#after_create :update_lineups
+
 	require 'csv'
 	def self.import(file)
 	    clean_sheet = []
@@ -34,5 +36,4 @@ class PlayerPool < ApplicationRecord
 			PlayerPool.create!(row)
 		}
 	end
-
 end

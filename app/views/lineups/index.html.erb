@@ -6,8 +6,16 @@
 
 <table width="100%" align="center">
 	<thead align="center">
-	<% @lineups.column_names[1..-3].each do |header| %>
+	<% @lineups.column_names[1..-6].each do |header| %>
 		<th align="center"><%= header %></th>
 	<% end %>
 	</thead>
+	<% @lineups.each do |l| %>
+		<tr>
+			<% l.attributes.each do |cell| %>
+				<% next if cell[0] == "id" or cell[0] == "expected_method" or cell[0] == "actual_fp" or cell[0] == "actual_updated" or cell[0] == "created_at" or cell[0] == "updated_at" %>
+				<td><%= cell[1] %></td>
+			<% end %>
+		</tr>
+	<% end %>
 </table>

@@ -19,6 +19,7 @@ def get_stuff_from_page(page,xpath)
 end
 
 =begin
+=end
 ##
 #### Seed Players (two columns only) from csv
 ##
@@ -26,10 +27,10 @@ csv = CSV.open(Rails.root.join('lib', 'seeds', 'players.csv'))
 csv.each{|row|
 	Player.create!({ :name => row[0], :position => row[1], :team => row[2], :basketball_reference_gamelog_url => row[3] })
 }
-=end
 
 
 =begin
+=end
 ##
 #### Seed PlayerGames from basketball-reference.com
 ##
@@ -84,7 +85,7 @@ players_query.each{|source_row|
 		end
 		@hsh["minutes_played"] = row["mp"]
 		@hsh["points"] = row["pts"].to_i
-		@hsh["three_pt_shots_made"] = row["fg3"].to_i
+		@hsh["made_three_pt_shots"] = row["fg3"].to_i
 		@hsh["o_rebounds"] = row["orb"].to_i
 		@hsh["d_rebounds"] = row["drb"].to_i
 		@hsh["assists"] = row["ast"].to_i
@@ -103,9 +104,10 @@ players_query.each{|source_row|
 		puts "#{player_import.count} rows created for #{source_row.name}. Script has been running for #{(Time.now-start)/60} minutes."
 	end
 }
+
+
+=begin
 =end
-
-
 ##
 #### Seed Players from PlayerGames (after seeding PlayerGames)
 ##
@@ -175,13 +177,13 @@ Player.all.each{|player|
 	puts "Updated #{player.name}!"
 }
 
-=begin
-=end
-
-
 
 
 puts "*\n*\n*\nApp took #{(Time.now-start)/60} minutes to seed.\n*\n*\n*"
+
+
+
+
 
 
 

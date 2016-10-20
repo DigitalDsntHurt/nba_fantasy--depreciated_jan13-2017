@@ -31,9 +31,10 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @player_pool.sort_by{|row| -row.salary}.each{|player| %>
+		<% @player_pool.order(salary: :desc).each{|player| %>
 			<tr>
 				<% player.attributes.each do |cell| %>
+					<% next if cell[0] == "created_at" or cell[0] == "updated_at" %>
 					<td><%= cell[1] %></td>
 				<% end %>
 			</tr>
