@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161019001858) do
   end
 
   create_table "player_pools", force: :cascade do |t|
+    t.integer  "player_id"
     t.string   "name"
     t.string   "name_and_id"
     t.string   "position"
