@@ -18,21 +18,40 @@ def get_stuff_from_page(page,xpath)
 	end
 end
 
-=begin
+######################################
+######################################
+## => /////// HUMAN INPUT ////// <= ##
+## 									##
+# 									 #
+	init_seed_players = true	     #
+	seed_playergames = false		 #
+	seed_players = false  			 #
+# 									 #
+## 									##
+## => ///// END HUMAN INPUT //// <= ##
+######################################
+######################################
+
+
 ##
 #### Seed Players (two columns only) from csv
 ##
+if init_seed_players == true
+
+
 csv = CSV.open(Rails.root.join('lib', 'seeds', 'players.csv'))
 csv.each{|row|
 	Player.create!({ :name => row[0], :position => row[1], :team => row[2], :basketball_reference_gamelog_url => row[3] })
 }
-=end
+end
 
 
-=begin
+
 ##
 #### Seed PlayerGames from basketball-reference.com
 ##
+if seed_playergames == true
+
 
 players_query = Player.all
 xpath = "//div[4]/div/div[2]/div/table/tbody/tr"
@@ -103,12 +122,17 @@ players_query.each{|source_row|
 		puts "#{player_import.count} rows created for #{source_row.name}. Script has been running for #{(Time.now-start)/60} minutes."
 	end
 }
-=end
+end
+
+
 
 
 ##
 #### Seed Players from PlayerGames (after seeding PlayerGames)
 ##
+if seed_players == true
+
+
 Player.all.each{|player|
 	query = PlayerGame.where(player_id: "#{player.id}").order(game_date: :desc).take(10)
 
@@ -120,10 +144,10 @@ Player.all.each{|player|
 	end
 
 	# made 3pters
-	if query.pluck(:made_3pt_shots).reject{|val| val == nil}.length == 0
-		made_3pt_shots = 0
+	if query.pluck(:three_pt_shots_made).reject{|val| val == nil}.length == 0
+		three_pt_shots_made = 0
 	else
-		made_3pt_shots =  query.pluck(:made_3pt_shots).reject{|val| val == nil}.inject{|sum, i| sum + i } / query.pluck(:made_3pt_shots).reject{|val| val == nil}.length
+		three_pt_shots_made =  query.pluck(:three_pt_shots_made).reject{|val| val == nil}.inject{|sum, i| sum + i } / query.pluck(:three_pt_shots_made).reject{|val| val == nil}.length
 	end
 
 	# rebounds
@@ -161,7 +185,7 @@ Player.all.each{|player|
 	end
 	
 	# bonus + fps
-	score = points + made_3pt_shots*0.5 + rebounds*1.25 + assists*1.5 + steals*2 + blocks*2 - turn_overs*0.5
+	score = points + three_pt_shots_made*0.5 + rebounds*1.25 + assists*1.5 + steals*2 + blocks*2 - turn_overs*0.5
 	bonus_check = [ points.to_s.length, assists.to_s.length, steals.to_s.length, blocks.to_s.length, rebounds.to_s.length ]
 	if bonus_check.reject{|num| num < 2 }.count >= 3
      	fps = score + 3.0
@@ -171,18 +195,10 @@ Player.all.each{|player|
     	fps = score
 	end 
 	
-	player.update(points: points, made_3pt_shots: made_3pt_shots, rebounds: rebounds, assists: assists, steals: steals, blocks: blocks, turnovers: turn_overs , fps: fps ) #team: curent_team, 
+	player.update(points: points, made_3pt_shots: three_pt_shots_made, rebounds: rebounds, assists: assists, steals: steals, blocks: blocks, turnovers: turn_overs , fps: fps ) #team: curent_team, 
 	puts "Updated #{player.name}!"
 }
-
-=begin
-=end
-
-
+end 
 
 
 puts "*\n*\n*\nApp took #{(Time.now-start)/60} minutes to seed.\n*\n*\n*"
-
-
-
-

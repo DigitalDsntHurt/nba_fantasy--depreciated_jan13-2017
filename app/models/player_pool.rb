@@ -1,4 +1,9 @@
 class PlayerPool < ApplicationRecord
+	
+	#validates :player_id, presence: true
+	#before_validation :get_player_id
+	#after_create :get_player_id, :output
+	before_create :get_player_id
 
 	require 'csv'
 	def self.import(file)
@@ -34,5 +39,42 @@ class PlayerPool < ApplicationRecord
 			PlayerPool.create!(row)
 		}
 	end
+
+
+	protected
+
+	def get_player_id
+		
+		player_match = Player.where(name: self.name).to_a
+		#p player_match.name
+		#p self.name
+		if player_match.count == 1 and player_match[0].class == Player and p self.position.include?(player_match[0].position) 
+				#self.player_id = player_match[0].id if player_match[0].id.class != NilClass
+				puts "=============="
+				puts "=============="
+				puts "=============="
+				puts "=============="
+				puts "=============="
+				puts "=============="
+				p self.name
+				p self.position
+				p player_match[0].name
+				p player_match[0].position
+				p player_match[0].id
+				self.player_id = player_match[0].id.to_s
+				puts "=============="
+				puts "=============="
+				puts "=============="
+				puts "=============="
+				puts "=============="
+				puts "=============="
+			#end
+		end
+	end
+
+=begin
+=end
+		
+
 
 end
