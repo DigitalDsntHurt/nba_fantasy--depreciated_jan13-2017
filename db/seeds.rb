@@ -23,7 +23,7 @@ end
 ## => /////// HUMAN INPUT ////// <= ##
 ## 									##
 # 									 #
-	init_seed_players = false	     #
+	init_seed_players = true	     #
 	seed_playergames = true			 #
 	seed_players = true			 	 #
 # 									 #

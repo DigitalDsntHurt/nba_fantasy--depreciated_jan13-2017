@@ -3,8 +3,9 @@
 
 
 
-#if PlayerPool.all.count > 1
+
 Rufus::Scheduler.new.every '30s', :first_in => '1s' do
+if PlayerPool.all.count > 1 and Lineup.all.count < 1
 puts "============ BEGIN SCHEDULER ============"
 
 	###
@@ -204,8 +205,8 @@ payload.uniq.each{|lineup|
 
 final_model = {:pg => [], :sg => [], :sf => [], :pf => [], :c => [], :g => [], :f => [], :util => [], :total_salary => 0, :total_fps => 0}
 puts "============ END SCHEDULER ============"
+end # mega if 
 end #scheduler
-#end # mega if 
 
 
 
