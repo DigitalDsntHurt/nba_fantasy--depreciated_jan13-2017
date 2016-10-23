@@ -12,6 +12,7 @@ class CreatePlayers < ActiveRecord::Migration[5.0]
       t.integer :steals
       t.integer :blocks
       t.integer :turnovers
+      t.integer :salary
       t.string :basketball_reference_gamelog_url
       
       t.timestamps
