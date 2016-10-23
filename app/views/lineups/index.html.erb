@@ -10,4 +10,14 @@
 		<th align="center"><%= header %></th>
 	<% end %>
 	</thead>
+	<% @lineups.order(expected_fp: :desc).each do |l| %>
+	<tr>
+		<% l.attributes.each do |cell|%>
+		<% next if cell[0] == "id" %>
+		<td>
+			<%= cell[1] %>
+		</td>
+		<% end %>
+	</tr>
+	<% end %>
 </table>

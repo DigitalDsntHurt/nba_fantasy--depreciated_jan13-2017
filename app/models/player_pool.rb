@@ -4,6 +4,7 @@ class PlayerPool < ApplicationRecord
 	#before_validation :get_player_id
 	#after_create :get_player_id, :output
 	before_create :get_player_id
+	after_create :update_players_most_recent_salary
 
 	require 'csv'
 	def self.import(file)
@@ -44,33 +45,21 @@ class PlayerPool < ApplicationRecord
 	protected
 
 	def get_player_id
-		
 		player_match = Player.where(name: self.name).to_a
-		#p player_match.name
-		#p self.name
 		if player_match.count == 1 and player_match[0].class == Player and p self.position.include?(player_match[0].position) 
-				#self.player_id = player_match[0].id if player_match[0].id.class != NilClass
-				puts "=============="
-				puts "=============="
-				puts "=============="
-				puts "=============="
-				puts "=============="
-				puts "=============="
-				p self.name
-				p self.position
-				p player_match[0].name
-				p player_match[0].position
-				p player_match[0].id
-				self.player_id = player_match[0].id.to_s
-				puts "=============="
-				puts "=============="
-				puts "=============="
-				puts "=============="
-				puts "=============="
-				puts "=============="
-			#end
+			self.player_id = player_match[0].id.to_s
 		end
 	end
+
+	def update_players_most_recent_salary
+		#p Player.where(id: self.player_id)[0]
+		#p Player.where(id: self.player_id).to_a
+		if self.player_id != nil
+			Player.where(id: self.player_id)[0].update!(salary: self.salary)
+		end
+	end
+
+
 
 =begin
 =end
