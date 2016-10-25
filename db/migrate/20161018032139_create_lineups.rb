@@ -10,6 +10,7 @@ class CreateLineups < ActiveRecord::Migration[5.0]
       t.string :f
       t.string :util
       t.float :expected_fp
+      t.integer :salary
       t.string :expected_updated
       t.string :expected_method
       t.string :actual_fp

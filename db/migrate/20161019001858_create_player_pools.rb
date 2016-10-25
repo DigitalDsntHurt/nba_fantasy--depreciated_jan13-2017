@@ -8,6 +8,7 @@ class CreatePlayerPools < ActiveRecord::Migration[5.0]
       t.string :team
       t.string :salary
       t.string :game_info
+      t.float :avg_dk_fppg
 
       t.timestamps
     end

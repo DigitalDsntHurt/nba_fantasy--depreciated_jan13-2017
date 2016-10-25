@@ -24,8 +24,8 @@ end
 ## 									##
 # 									 #
 	init_seed_players = true	     #
-	seed_playergames = false		 #
-	seed_players = false  			 #
+	seed_playergames = true			 #
+	seed_players = true			 	 #
 # 									 #
 ## 									##
 ## => ///// END HUMAN INPUT //// <= ##

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019001858) do
+ActiveRecord::Schema.define(version: 20161025003804) do
 
   create_table "lineups", force: :cascade do |t|
     t.string   "pg"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20161019001858) do
     t.string   "f"
     t.string   "util"
     t.float    "expected_fp"
+    t.integer  "salary"
     t.string   "expected_updated"
     t.string   "expected_method"
     t.string   "actual_fp"
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20161019001858) do
     t.string   "game_info"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.float    "avg_dk_fppg"
   end
 
   create_table "players", force: :cascade do |t|
@@ -80,6 +82,7 @@ ActiveRecord::Schema.define(version: 20161019001858) do
     t.integer  "steals"
     t.integer  "blocks"
     t.integer  "turnovers"
+    t.integer  "salary"
     t.string   "basketball_reference_gamelog_url"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
