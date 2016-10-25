@@ -57,4 +57,24 @@
 <hr>
 <br>
 <br>
+
+
+<% @players.sort_by{|p| p.name}.each do |player| %>
+<p><%= player.name %></p>
+<% end %>
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<br>
+<br>
 <%= console %>

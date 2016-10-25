@@ -33,7 +33,7 @@ class PlayerPool < ApplicationRecord
 				count += 1
 			}
 
-			headers.insert(-2,:avg_fppg)
+			headers.insert(-2,:avg_dk_fppg)
 			headers.delete(:avgpointspergame)
 			headers.insert(-3,:game_info)
 			headers.delete(:gameinfo)
