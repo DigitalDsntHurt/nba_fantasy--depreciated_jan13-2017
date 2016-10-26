@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025003804) do
+ActiveRecord::Schema.define(version: 20161019001858) do
 
   create_table "lineups", force: :cascade do |t|
     t.string   "pg"
@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 20161025003804) do
     t.string   "team"
     t.string   "salary"
     t.string   "game_info"
+    t.float    "avg_dk_fppg"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.float    "avg_dk_fppg"
   end
 
   create_table "players", force: :cascade do |t|

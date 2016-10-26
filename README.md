@@ -1,9 +1,7 @@
-# README
-# nba_fantasy
+# NBA Fantasy Prediction
 
-* Ruby version
-
-* System dependencies
+* Ruby version: 2.3.0
+* Rails version: 5.0.0
 
 * Configuration
 Run..
@@ -20,13 +18,4 @@ There are three parts to the db/seeds.rb file
  - seed playergames model (from pbbr)
  - finish seeding players (from data in playergames model)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-
-
-* ...
 # nba_fantasy
